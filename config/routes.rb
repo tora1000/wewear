@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root to: "coordinations#index"
-  resources :coordinations
+  get 'coordinations/index'
+  root to: "coordinations/index"
 end
