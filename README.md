@@ -34,9 +34,9 @@
 | ------------ | ----------- | ----------------------------- |
 | text         | text        | null: false                   |
 | user         | references  | foreign_key: true             |
-| coodination  | references  | foreign_key: true             |
+| coordination  | references  | foreign_key: true             |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :coodination
+- belongs_to :coordination
