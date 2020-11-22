@@ -17,9 +17,11 @@
 
 | Column             | Type        | Options           |
 | ------------------ | ----------- | ------------------|
-| name               | string      | null: false       |
+| title              | string      | null: false       |
 | description        | text        | null: false       |
 | recommended_point  | string      | null: false       | 
+| favorite_item      | references  | foreign_key:true  |
+| use                | references  | foreign_key:true  |
 | user               | references  | foreign_key:true  |
 
 
