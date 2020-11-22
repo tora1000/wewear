@@ -14,29 +14,32 @@
       </div>
     </a>
 
+
     <form class="form-signin">
       <img class="mb-4" src="/assets/w.png" alt="" width="72" height="72">
       <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
       <h1 class="h3 mb-3 font-weight-normal">サインイン</h1>
       <!-- <label for="inputEmail" class="sr-only">Email address</label> -->
-      <label for="inputEmail" class="sr-only">メールアドレス</label>
+      <label for="nickname" class="sr-only">ニックネーム</label>
       <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
-      <input type="email" id="inputEmail" class="form-control" placeholder="メールアドレス" required autofocus>
+      <input type="nickname" id="nickname" class="form-control" placeholder="ニックネーム" required >
+      <label for="email" class="sr-only">メールアドレス</label>
+      <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+      <input type="email" id="email" class="form-control" placeholder="メールアドレス" required autofocus>
       <!-- <label for="inputPassword" class="sr-only">Password</label> -->
-      <label for="inputPassword" class="sr-only">パスワード</label>
+      <label for="password" class="sr-only">パスワード</label>
       <!-- <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> -->
-      <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" required>
+      <input type="password" id="password" class="form-control" placeholder="パスワード" required>
       <!-- <label for="inputPassword-confirmation" class="sr-only">Password-Confirmation</label> -->
-      <label for="inputPassword-confirmation" class="sr-only">パスワード(確認)</label>
+      <label for="password-confirmation" class="sr-only">パスワード(確認)</label>
       <!-- <input type="password" id="inputPassword-confirmation" class="form-control" placeholder="Password-Confirmation" required> -->
-      <input type="password-confirmation" id="inputPassword-confirmation" class="form-control" placeholder="パスワード(確認)" required>
-      <select class="custom-select d-block w-100" id="sex_id" required>
+      <input type="password-confirmation" id="password-confirmation" class="form-control" placeholder="パスワード(確認)" required>
+      <select class="custom-select d-block w-100"  id="sex_id" required>
         <!-- <option value="">Choose...</option> -->
         <option value="">選択してください</option>
         <!-- <option>United States</option> -->
         <option value>男性</option>
         <option value>女性</option>
-        <option value>秘匿</option>
       </select>
 
 
