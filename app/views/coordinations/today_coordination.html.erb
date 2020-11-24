@@ -1,19 +1,132 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bootstrap.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
-<body>
+<!doctype html>
+<html lang="ja" >
+  <head>
+    <title>価格表示テンプレート for Bootstrap · Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="/assets/coordination.scss" rel="stylesheet">
+    <link href="../example.css" rel="stylesheet">
+  </head>
+  <body >
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
   <div class="container">
-    <div class="row">
-      <div class="col-md-3">wewear</div>
-      <div class="col-md-3"></div>
-      <div class="col-md-3">tora</div>
-      <button type="button" class="col-md-3 btn btn-inf ">新規投稿</button>
-    </div> 
+    <span class="skiplink-text">Skip to main content</span>
   </div>
-</body>
+</a>
+
+  <nav class="site-header sticky-top py-1 d-flex">
+  <a class="title" href="#">wewear</a>
+  <div class="container d-flex flex-column flex-md-row justify-content-around">
+    <a class="py-2 d-none d-md-inline-block" href="#">tora</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">今日のコーディネート</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">今週のコーディネート</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">新規投稿</a>
+  </div>
+  </nav>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <!-- <h1 class="display-4">Pricing</h1> -->
+  <h1 class="display-4">価格</h1>
+  <!-- <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p> -->
+  <p class="lead">この Bootstrap テンプレートを使ってまだ見ぬ顧客への効果的な価格テーブルを素早く構築しましょう. これは Bootstrap のコンポーネントとユーティリティを少しカスタマイズして構築されています.</p>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <!-- <h4 class="my-0 font-weight-normal">Free</h4> -->
+        <h4 class="my-0 font-weight-normal">フリー</h4>
+      </div>
+      <div class="card-body">
+        <!-- <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1> -->
+        <h1 class="card-title pricing-card-title">￥0 <small class="text-muted">/ 月</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <!-- <li>10 users included</li> -->
+          <li>10 ユーザー</li>
+          <!-- <li>2 GB of storage</li> -->
+          <li>2 GB のストレージ</li>
+          <!-- <li>Email support</li> -->
+          <li>メールによるサポート</li>
+          <!-- <li>Help center access</li> -->
+          <li>ヘルプセンターへのアクセス</li>
+        </ul>
+        <!-- <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button> -->
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">無料でサインアップ</button>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <!-- <h4 class="my-0 font-weight-normal">Pro</h4> -->
+        <h4 class="my-0 font-weight-normal">プロフェッショナル</h4>
+      </div>
+      <div class="card-body">
+        <!-- <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1> -->
+        <h1 class="card-title pricing-card-title">￥1500 <small class="text-muted">/ 月</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <!-- <li>20 users included</li> -->
+          <li>20 ユーザー</li>
+          <!-- <li>10 GB of storage</li> -->
+          <li>10 GB のストレージ</li>
+          <!-- <li>Priority email support</li> -->
+          <li>メールによる優先的なサポート</li>
+          <!-- <li>Help center access</li> -->
+          <li>ヘルプセンターへのアクセス</li>
+        </ul>
+        <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button> -->
+        <button type="button" class="btn btn-lg btn-block btn-primary">はじめる</button>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <!-- <h4 class="my-0 font-weight-normal">Enterprise</h4> -->
+        <h4 class="my-0 font-weight-normal">エンタープライズ</h4>
+      </div>
+      <div class="card-body">
+        <!-- <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1> -->
+        <h1 class="card-title pricing-card-title">￥2900 <small class="text-muted">/ 月</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <!-- <li>30 users included</li> -->
+          <li>30 ユーザー</li>
+          <!-- <li>15 GB of storage</li> -->
+          <li>15 GB のストレージ</li>
+          <!-- <li>Phone and email support</li> -->
+          <li>メールと電話によるサポート</li>
+          <!-- <li>Help center access</li> -->
+          <li>ヘルプセンターへのアクセス</li>
+        </ul>
+        <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button> -->
+        <button type="button" class="btn btn-lg btn-block btn-primary">詳細を聞く</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<script>
+  Holder.addTheme('thumb', {
+    bg: '#55595c',
+    fg: '#eceeef',
+    text: 'Thumbnail'
+  });
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+  window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script><script src="/docs/4.5/assets/js/vendor/anchor.min.js"></script>
+<script src="/docs/4.5/assets/js/vendor/clipboard.min.js"></script>
+<script src="/docs/4.5/assets/js/vendor/bs-custom-file-input.min.js"></script>
+<script src="/docs/4.5/assets/js/src/application.js"></script>
+<script src="/docs/4.5/assets/js/src/search.js"></script>
+<script src="/docs/4.5/assets/js/src/ie-emulation-modes-warning.js"></script>
+  </body>
 </html>

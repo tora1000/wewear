@@ -11,4 +11,10 @@ class CoordinationsController < ApplicationController
   
   def show  
   end
+
+  def today_coordination
+  end
+
+  def week_coordination
+  end
 end

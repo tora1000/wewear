@@ -4,16 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link href="/assets/coordination.scss" rel="stylesheet">
+  <link href="../example.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">wewear</div>
-      <div class="col-md-3"></div>
-      <div class="col-md-3">tora</div>
-      <button type="button" class="col-md-3 btn btn-inf ">新規投稿</button>
-    </div> 
+  <nav class="site-header sticky-top py-1 d-flex">
+  <a class="title" href="#">wewear</a>
+  <div class="container d-flex flex-column flex-md-row justify-content-around">
+    <a class="py-2 d-none d-md-inline-block" href="#">tora</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">今日のコーディネート</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">今週のコーディネート</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">新規投稿</a>
   </div>
+  </nav>
 </body>
 </html>
