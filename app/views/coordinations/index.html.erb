@@ -17,13 +17,27 @@
     <nav class="site-header sticky-top py-1 d-flex">
       <a class="title" href="#">wewear</a>
       <div class="container d-flex flex-column flex-md-row justify-content-around">
-        <a class="py-2 d-none d-md-inline-block" href="#">今日のコーディネート</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">今週のコーディネート</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">新規投稿</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">マイページ</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">ログアウト</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">ログイン</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">新規登録</a>
+        <div class="py-2 d-none d-md-inline-block" >
+          <%= link_to '今日のコーディネート', today_coordination_coordinations_path %>
+        </div>
+        <div class="py-2 d-none d-md-inline-block" >
+          <%= link_to '今週のコーディネート', week_coordination_coordinations_path %>
+        </div>
+        <div class="py-2 d-none d-md-inline-block">
+          <%= link_to '新規投稿', new_coordination_path %>
+        </div>
+        <div class="py-2 d-none d-md-inline-block">
+          <%= link_to 'マイページ' %>
+        </div>
+        <div class="py-2 d-none d-md-inline-block">
+          <%= link_to 'ログアウト', destroy_user_session_path %>
+        </div>
+        <div class="py-2 d-none d-md-inline-block">
+          <%= link_to 'ログイン', new_user_session_path %>
+        </div>
+        <div class="py-2 d-none d-md-inline-block" >
+          <%= link_to '新規登録', new_user_registration_path %>
+        </div>
       </div>
     </nav>
 
@@ -127,8 +141,8 @@
     <footer class="container py-5">
       <div class="row">
         <div class="col-12 col-md">
-          <svg xmlns="/assets/w.png" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-          <small class="d-block mb-3 text-muted">&copy; 2020 tora Inc</small>
+          <img class="mb-2 ml-4 " src="/assets/w.png" alt="" width="48" height="48"> 
+          <small class="d-block mb-3 mt-4 text-muted">&copy; 2020 tora Inc</small>
         </div>
       </div>
     </footer>
