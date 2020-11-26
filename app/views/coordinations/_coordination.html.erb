@@ -1,0 +1,10 @@
+<div class="card">
+  <%= link_to image_tag(coordination.image, class: :card__img), coordination_path(coordination.id), method: :get %>
+  <div class="card__body">
+    <%= link_to coordination.title, coordination_path(coordination.id), method: :get, class: :card__title %>
+    <p class="card__summary">
+      <%= coordination.description %>
+    </p>
+    <%= link_to "by#{coordination.user.nickname}", user_path(coordination.user_id), class: :card__user %>
+  </div>
+</div>

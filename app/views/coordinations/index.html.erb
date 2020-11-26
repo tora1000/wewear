@@ -14,8 +14,9 @@
     </a>
 
     <nav class="site-header sticky-top py-1 d-flex">
-      <a class="title" href="#">wewear</a>
+      <%= link_to 'wewear', root_path, class: :title %>
       <div class="container d-flex flex-column flex-md-row justify-content-around">
+      <% if user_signed_in? %>
         <div class="py-2 d-none d-md-inline-block" >
           <%= link_to '今日のコーディネート', today_coordination_coordinations_path %>
         </div>
@@ -29,16 +30,22 @@
           <%= link_to 'マイページ' %>
         </div>
         <div class="py-2 d-none d-md-inline-block">
-          <%= link_to 'ログアウト', destroy_user_session_path %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div class="py-2 offset-8 d-none d-md-inline-block" >
+          <%= link_to '新規登録', new_user_registration_path %>
         </div>
         <div class="py-2 d-none d-md-inline-block">
           <%= link_to 'ログイン', new_user_session_path %>
         </div>
-        <div class="py-2 d-none d-md-inline-block" >
-          <%= link_to '新規登録', new_user_registration_path %>
-        </div>
+      <% end %>
       </div>
     </nav>
+    
+    <div class="card__wrapper">
+      <%= render partial: "coordination", collection: @coordinations %>
+    </div>
 
     <%# <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
