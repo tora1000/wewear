@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="/assets/coordination.scss" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+
+
     <%# <link href="../example.css" rel="stylesheet"> %>
   </head>
   <body>
@@ -43,8 +46,10 @@
       </div>
     </nav>
     
-    <div class="card__wrapper">
-      <%= render partial: "coordination", collection: @coordinations %>
+    <div class="col-4 mt-4">
+      <div class="card__wrapper">
+        <%= render partial: "coordination", collection: @coordinations %>
+      </div>
     </div>
 
     <%# <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
