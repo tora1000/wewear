@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" >
+<html lang="ja" class="h-100">
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
@@ -9,7 +9,7 @@
 
     <%# <link href="../example.css" rel="stylesheet"> %>
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
@@ -20,7 +20,7 @@
       <%= link_to 'wewear', root_path, class: :title %>
       <div class="container d-flex flex-column flex-md-row justify-content-around">
       <% if user_signed_in? %>
-        <div class="py-2 d-none d-md-inline-block" >
+        <div class="py-2 d-none d-md-inline-block offset-6" >
           <%= link_to '今日のコーディネート', today_coordination_coordinations_path %>
         </div>
         <div class="py-2 d-none d-md-inline-block" >
@@ -46,8 +46,8 @@
       </div>
     </nav>
     
-    <div class="col-4 mt-4">
-      <div class="card__wrapper">
+    <div class="col-12 mt-4">
+      <div class="card__wrapper d-flex">
         <%= render partial: "coordination", collection: @coordinations %>
       </div>
     </div>
@@ -149,15 +149,14 @@
       </div>
     </div> %>
 
-    <footer class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md">
-          <img class="mb-2 ml-4 " src="/assets/w.png" alt="" width="48" height="48"> 
+    <footer class="footer mt-auto py-3">
+      <div class="container text-center">
+        <span class="text-muted">
+          <img class="mx-1 my-1 " src="/assets/w.png" alt="" width="56" height="56"> 
           <small class="d-block mb-3 mt-4 text-muted">&copy; 2020 tora Inc</small>
-        </div>
+        </span>
       </div>
     </footer>
-
 
     <%# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> %>
     <%# <script> %>
@@ -171,3 +170,4 @@
     <%# <script src="/docs/4.5/assets/js/src/ie-emulation-modes-warning.js"></script> %>
   </body>
 </html>
+

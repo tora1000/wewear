@@ -16,6 +16,9 @@
         -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
         display: inline-block;
     }
+  .form-image {
+        display: none;
+    }
   </style>
   </head>
   <body  class="bg-light" >
@@ -27,7 +30,7 @@
   
     <div class="container">
   <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/assets/w.png" alt="" width="72" height="72">
+    <%= link_to image_tag( "/assets/w.png", alt:"", width:"72", height:"72"), root_path ,class:"d-block mx-auto mb-4"%>
     <h2>コーディネート新規投稿</h2>
     <p class="lead">自分が気に入ったコーディネートを残しておきましょう！</p>
   </div>
@@ -35,18 +38,10 @@
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <%= f.label :image, "コーディネート写真" %>
-        <form action="" method="post" enctype="multipart/form-data">
-          <div class="imagePreview"></div>
-          <div class="input-group">
-            <label class="input-group-btn">
-              <span class="btn btn-primary">
-                  ファイルを選択してください<input type="file" style="display:none" class="uploadFile">
-              </span>
-            </label>
-          <input type="text" class="form-control" readonly="">
-          </div>
-        </form>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <div class="imagePreview"></div>
+      <%= f.label :image, "写真を選択してください", class:"btn btn-primary" %>
+      <%= f.file_field :image ,class: "form-image" %>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </div>
     <div class="col-md-8  order-md-1">

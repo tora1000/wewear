@@ -106,3 +106,4 @@ https://gyazo.com/1a9616ed8b77b337f23272611591f9a3
 
 - belongs_to :user
 - belongs_to :coordination
+
