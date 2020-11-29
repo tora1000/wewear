@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_032421) do
     t.string "title", null: false
     t.text "description", null: false
     t.string "recommended_point", null: false
+    t.integer "favorite_item", null: false
+    t.integer "use", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
