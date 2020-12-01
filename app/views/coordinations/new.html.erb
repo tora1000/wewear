@@ -21,6 +21,7 @@
     }
   </style>
   </head>
+
   <body  class="bg-light" >
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
@@ -34,77 +35,104 @@
     <h2>コーディネート新規投稿</h2>
     <p class="lead">自分が気に入ったコーディネートを残しておきましょう！</p>
   </div>
+
   <%= form_with  model:@coordination,  local: true do |f| %>
-  <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-      <%= f.label :image, "コーディネート写真" %><span class="text-muted">（必須）</span>
-      <div class="imagePreview"></div>
-      <%= f.label :image, "写真を選択してください", class:"btn btn-primary" %>
-      <%= f.file_field :image ,class: "form-image" %>
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <%= f.label :image, "コーディネート写真" %><span class="text-muted">（必須）</span>
+        <div class="imagePreview"></div>
+        <div class="input-group">
+          <label class="input-group-btn">
+              <span class="btn btn-primary">
+                  ファイルを選択してください<input type="file" style="display:none" class="uploadFile">
+              </span>
+          </label>
+        </div>
+        <%= f.file_field :image ,class: "form-image" %>
+      </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </div>
-    <div class="col-md-8  order-md-1">
-      <h4 class="mb-3">コーディネート情報</h4>
-      <form class="needs-validation" novalidate>
-        <div class="mb-3">
-          <label for="title">タイトル<span class="text-muted">（必須）</span></label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="title" placeholder="(例)セットアップコーデ" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              タイトルを入力してください。
+      <script>
+                $(document).on('change', ':file', function() {
+              var input = $(this),
+              numFiles = input.get(0).files ? input.get(0).files.length : 1,
+              label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+              input.parent().parent().next(':text').val(label);
+
+              var files = !!this.files ? this.files : [];
+              if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+              if (/^image/.test( files[0].type)){ // only image file
+                  var reader = new FileReader(); // instance of the FileReader
+                  reader.readAsDataURL(files[0]); // read the local file
+                  reader.onloadend = function(){ // set image data as background of div
+                      input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
+                  }
+              }
+          });
+      </script>
+
+      <div class="col-md-8  order-md-1">
+        <h4 class="mb-3">コーディネート情報</h4>
+        <form class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="title">タイトル<span class="text-muted">（必須）</span></label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="title" placeholder="(例)セットアップコーデ" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                タイトルを入力してください。
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="discription">説明<span class="text-muted">（必須）</span></label>
-          <textarea class="form-control" id="description" placeholder="(例)このコーディネートは夏向けです。" required></textarea>
-          <div class="invalid-feedback">
-            説明を入力してください。
-          </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="recommended_point">おすすめポイント<span class="text-muted">（任意）</span></label>
-          <input type="text" class="form-control" id="recommended_point" placeholder="(例)流行りのベージュを使用しています。">
-        </div>
-
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="favorite_item">おすすめアイテム<span class="text-muted">（必須）</span></label>
-            <select class="custom-select d-block w-100" id="favorite_item" required>
-              <option value="">選択してください</option>
-              <option value>トップス</option>
-              <option value>パンツ</option>
-              <option value>シューズ</option>
-              <option value>アウター</option>
-              <option value>アクセサリー</option>
-            </select>
+          <div class="mb-3">
+            <label for="discription">説明<span class="text-muted">（必須）</span></label>
+            <textarea class="form-control" id="description" placeholder="(例)このコーディネートは夏向けです。" required></textarea>
             <div class="invalid-feedback">
-              おすすめアイテムを選択してください。
+              説明を入力してください。
             </div>
           </div>
-          <div class="col-md-5 mb-3">
-            <label for="state">コーディネートの用途<span class="text-muted">（必須）</span></label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">選択してください</option>
-              <option>プライベート</option>
-              <option>通勤、通学</option>
-              <option>デート</option>
-            </select>
-            <div class="invalid-feedback">
-              コーディネートの用途を選んでください。
+
+          <div class="mb-3">
+            <label for="recommended_point">おすすめポイント<span class="text-muted">（任意）</span></label>
+            <input type="text" class="form-control" id="recommended_point" placeholder="(例)流行りのベージュを使用しています。">
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="favorite_item">おすすめアイテム<span class="text-muted">（必須）</span></label>
+              <select class="custom-select d-block w-100" id="favorite_item" required>
+                <option value="">選択してください</option>
+                <option value>トップス</option>
+                <option value>パンツ</option>
+                <option value>シューズ</option>
+                <option value>アウター</option>
+                <option value>アクセサリー</option>
+              </select>
+              <div class="invalid-feedback">
+                おすすめアイテムを選択してください。
+              </div>
+            </div>
+            <div class="col-md-5 mb-3">
+              <label for="state">コーディネートの用途<span class="text-muted">（必須）</span></label>
+              <select class="custom-select d-block w-100" id="state" required>
+                <option value="">選択してください</option>
+                <option>プライベート</option>
+                <option>通勤、通学</option>
+                <option>デート</option>
+              </select>
+              <div class="invalid-feedback">
+                コーディネートの用途を選んでください。
+              </div>
             </div>
           </div>
-        </div>
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">新規投稿をする</button>
-      </form>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">新規投稿をする</button>
+        </form>
+      </div>
     </div>
-  </div>
   <% end %>
-  </div>
+  <div>
     <footer class="my-5 pt-5 text-muted text-center text-small">
       <p class="mb-1">&copy; 2020 tora Inc.</p>
     </footer>
@@ -128,23 +156,6 @@
           });
         }, false);
       })();
-
-        $(document).on('change', ':file', function() {
-            var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.parent().parent().next(':text').val(label);
-
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-            if (/^image/.test( files[0].type)){ // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
-                reader.onloadend = function(){ // set image data as background of div
-                    input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
-                }
-            }
-        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
