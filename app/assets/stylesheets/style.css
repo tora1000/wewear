@@ -132,7 +132,6 @@ a {
 .card__wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
   min-height: 300px;
 }
