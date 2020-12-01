@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :coordinations
   has_many :comments
   
+  with_options presence: true do
+    validates :nickname,:email,:sex_id
+  end
 end
