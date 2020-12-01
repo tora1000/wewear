@@ -32,6 +32,6 @@ class CoordinationsController < ApplicationController
 
   private
   def coordination_params
-    params.require(:coordination).permit(:title, :description, :recommended_point, :image).merge(user_id: current_user.id)
+    params.require(:coordination).permit(:title, :description, :recommended_point, :favorite_item, :use, :image).merge(user_id: current_user.id)
   end
 end
