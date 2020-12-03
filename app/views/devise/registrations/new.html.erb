@@ -14,18 +14,15 @@ body {
 
 body {
   display: -ms-flexbox;
-  display: flex;
   -ms-flex-align: center;
   align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
   background-color: #f5f5f5;
 }
 
 .form-signin {
   width: 100%;
   max-width: 330px;
-  padding: 15px;
+  padding: 30px;
   margin: auto;
 }
 .form-signin .checkbox {
@@ -73,6 +70,19 @@ body {
   z-index: 2;
 }
 
+  .site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  }
+  .site-header a {
+    color: #999;
+    transition: ease-in-out color .15s;
+  }
+  .site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 </style>
 <body class="text-center" >
   <%# <a id="skippy" class="sr-only sr-only-focusable" href="#content">
@@ -80,10 +90,6 @@ body {
       <span class="skiplink-text">Skip to main content</span>
     </div>
   </a> %>
-  <div class="site-header fixed-top py-2 text-left align-items-center">
-    <%= link_to "wewear", root_path, class:"title d-flex" %>
-  </div>
-  
   <div class="form-signin"> 
     
     <%= form_with model: @user, url: user_registration_path, local: true do |f| %>

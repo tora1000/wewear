@@ -13,7 +13,55 @@
 
     <title>Wewear</title>
   </head>
+
+  <style>
+  .site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  }
+  .site-header a {
+    color: #999;
+    transition: ease-in-out color .15s;
+  }
+  .site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  </style>
   <body>
+    <header>
+      <nav class="site-header sticky-top py-1 d-flex">
+      <%= link_to 'wewear', root_path, class: :title %>
+      <div class="container d-flex flex-column flex-md-row justify-content-around">
+        <% if user_signed_in? %>
+          <div class="py-2 d-none d-md-inline-block offset-6" >
+            <%= link_to '今日のコーディネート', today_coordination_coordinations_path %>
+          </div>
+          <div class="py-2 d-none d-md-inline-block" >
+            <%= link_to '今週のコーディネート', week_coordination_coordinations_path %>
+          </div>
+          <div class="py-2 d-none d-md-inline-block">
+            <%= link_to '新規投稿', new_coordination_path %>
+          </div>
+          <div class="py-2 d-none d-md-inline-block">
+            <%= link_to 'マイページ' %>
+          </div>
+          <div class="py-2 d-none d-md-inline-block">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </div>
+        <% else %>
+          <div class="py-2 offset-8 d-none d-md-inline-block" >
+            <%= link_to '新規登録', new_user_registration_path %>
+          </div>
+          <div class="py-2 d-none d-md-inline-block">
+            <%= link_to 'ログイン', new_user_session_path %>
+          </div>
+        <% end %>
+      </div>
+      </nav>
+    </header>
+    
     <%= yield %>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

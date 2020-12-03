@@ -16,35 +16,7 @@
       </div>
     </a>
 
-    <nav class="site-header sticky-top py-1 d-flex">
-      <%= link_to 'wewear', root_path, class: :title %>
-      <div class="container d-flex flex-column flex-md-row justify-content-around">
-      <% if user_signed_in? %>
-        <div class="py-2 d-none d-md-inline-block offset-6" >
-          <%= link_to '今日のコーディネート', today_coordination_coordinations_path %>
-        </div>
-        <div class="py-2 d-none d-md-inline-block" >
-          <%= link_to '今週のコーディネート', week_coordination_coordinations_path %>
-        </div>
-        <div class="py-2 d-none d-md-inline-block">
-          <%= link_to '新規投稿', new_coordination_path %>
-        </div>
-        <div class="py-2 d-none d-md-inline-block">
-          <%= link_to 'マイページ' %>
-        </div>
-        <div class="py-2 d-none d-md-inline-block">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        </div>
-      <% else %>
-        <div class="py-2 offset-8 d-none d-md-inline-block" >
-          <%= link_to '新規登録', new_user_registration_path %>
-        </div>
-        <div class="py-2 d-none d-md-inline-block">
-          <%= link_to 'ログイン', new_user_session_path %>
-        </div>
-      <% end %>
-      </div>
-    </nav>
+    
     
     <div class="col-12 mt-4">
       <div class="card__wrapper d-flex">
