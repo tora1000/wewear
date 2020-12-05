@@ -4,11 +4,12 @@
     <title>申し込みフォームサンプル for Bootstrap · Bootstrap</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <link href="form-validation.css" rel="stylesheet">
-    <link href="../example.css" rel="stylesheet">
+    <link href="/assets/coordination.scss" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+
     
   <style>
-   .imagePreview {
+    .imagePreview {
         width: 100%;
         height: 420px;
         background-position: center center;
@@ -16,166 +17,143 @@
         -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
         display: inline-block;
     }
+    .form-image {
+        display: none;
+    }
   </style>
   </head>
+
   <body  class="bg-light" >
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
-  <div class="container">
-    <span class="skiplink-text">Skip to main content</span>
-  </div>
-</a>
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
   
-    <div class="container">
-  <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/assets/w.png" alt="" width="72" height="72">
-    <!-- <h2>Checkout form</h2> -->
-    <h2>コーディネート編集</h2>
-    <!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+    <div class="container2 offset-2">
+    <div class="py-5 text-center">
+    <%= link_to image_tag( "/assets/w.png", alt:"", width:"72", height:"72"), root_path ,class:"d-block mx-auto mb-4"%>
+    <h2>コーディネート新規投稿</h2>
     <p class="lead">自分が気に入ったコーディネートを残しておきましょう！</p>
   </div>
-  <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-      <label for="image">コーディネート写真</label>
-        <form action="" method="post" enctype="multipart/form-data">
-          <div class="imagePreview"></div>
-          <div class="input-group">
-            <label class="input-group-btn">
+
+  <%= form_with  model:@coordination,  local: true do |f| %>
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <%= f.label :image, "コーディネート写真" %><span class="text-muted">（必須）</span>
+        <div class="imagePreview"></div>
+        <div class="input-group">
+          <label class="input-group-btn">
               <span class="btn btn-primary">
-                  ファイルを選択してください<input type="file" style="display:none" class="uploadFile">
+                <%= f.label :image, "写真を選択してください",class: "mb-0"%>
+                <%= f.file_field :image,class: "form-image" %>
               </span>
-            </label>
-          <input type="text" class="form-control" readonly="">
-          </div>
-        </form>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+          </label>
+        </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script>
+                $(document).on('change', ':file', function() {
+              var input = $(this),
+              numFiles = input.get(0).files ? input.get(0).files.length : 1,
+              label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+              input.parent().parent().next(':text').val(label);
+
+              var files = !!this.files ? this.files : [];
+              if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+              if (/^image/.test( files[0].type)){ // only image file
+                  var reader = new FileReader(); // instance of the FileReader
+                  reader.readAsDataURL(files[0]); // read the local file
+                  reader.onloadend = function(){ // set image data as background of div
+                      input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
+                  }
+              }
+          });
+      </script>
+
+      <div class="col-md-8  order-md-1">
+        <h4 class="mb-3">コーディネート情報</h4>
+        <form class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="title">タイトル<span class="text-muted">（必須）</span></label>
+            <div class="input-group">
+              <%= f.text_field :title,class:"form-control",placeholder:"(例)セットアップコーデ"%>
+              <div class="invalid-feedback" style="width: 100%;">
+                タイトルを入力してください。
+              </div>
+            </div>
+          </div>
+       
+
+          <div class="mb-3">
+            <label for="discription">説明<span class="text-muted">（必須）</span></label>
+            <div class="input-group">
+              <%= f.text_area :description, class:"form-control" ,placeholder:"(例)このコーディネートは夏向けです。" %>
+              <div class="invalid-feedback">
+                説明を入力してください。
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="mb-3">
+            <label for="recommended_point">おすすめポイント<span class="text-muted">（任意）</span></label>
+             <%= f.text_field :recommended_point, class: "form-control", placeholder:"(例)流行りのベージュを使用しています。"%>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="favorite_item">おすすめアイテム<span class="text-muted">（必須）</span></label>
+              <%= f.select :favorite_item, {'トップス': 1, 'パンツ': 2,'シューズ': 3, 'アウター': 4,'アクセサリー': 5}, { include_blank: 'アイテムを選択してください'}, { class: 'form-control custom-select' , required: true } %>
+              <div class="invalid-feedback">
+                アイテムを選択してください。
+              </div>
+            </div>
+
+
+            <div class="col-md-5 mb-3">
+              <label for="use">コーディネートの用途<span class="text-muted">（必須）</span></label>
+              <%= f.select :use, {'プライベート': 1, '通勤、通学': 2,'デート': 3}, { include_blank: '用途を選択してください'}, { class: 'form-control custom-select' , required: true } %>
+              <div class="invalid-feedback">
+                コーディネートの用途を選んでください。
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <%= f.submit "新規投稿をする" ,class:"btn btn-lg btn-primary btn-block" %>
+        </form>
+      </div>
     </div>
-    <div class="col-md-8  order-md-1">
-      <!-- <h4 class="mb-3">coordination_imformation</h4> -->
-      <h4 class="mb-3">コーディネート情報</h4>
-      <form class="needs-validation" novalidate>
-        <div class="mb-3">
-          <!-- <label for="title">Title</label> -->
-          <label for="title">タイトル</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="title" placeholder="セットアップコーデ" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              <!-- Your title is required. -->
-              タイトルを入力してください。
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <!-- <label for="discription">discription</label> -->
-          <label for="discription">説明</label>
-          <!-- <input type="text" class="form-control" id="discription" placeholder="1234 Main St" required> -->
-          <textarea class="form-control" id="description" placeholder="このコーディネートは夏向けです。" required></textarea>
-          <div class="invalid-feedback">
-            <!-- Please enter your shipping discription. -->
-            説明を入力してください。
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <!-- <label for="discription2">discription 2 <span class="text-muted">(Optional)</span></label> -->
-          <label for="recommended_point">おすすめポイント <span class="text-muted">（任意）</span></label>
-          <!-- <input type="text" class="form-control" id="discription2" placeholder="Apartment or suite"> -->
-          <input type="text" class="form-control" id="recommended_point" placeholder="流行りのベージュを使用しています。">
-        </div>
-
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <!-- <label for="favorite_item">favorite_item</label> -->
-            <label for="favorite_item">おすすめアイテム</label>
-            <select class="custom-select d-block w-100" id="favorite_item" required>
-              <!-- <option value="">Choose...</option> -->
-              <option value="">選択してください</option>
-              <!-- <option>United States</option> -->
-              <option value="1">トップス</option>
-              <option value="2">パンツ</option>
-              <option value="3">シューズ</option>
-              <option value="4">アウター</option>
-              <option value="5">アクセサリー</option>
-            </select>
-            <div class="invalid-feedback">
-              <!-- Please select a valid favorite_item. -->
-              おすすめアイテムを選択してください。
-            </div>
-          </div>
-          <div class="col-md-5 mb-3">
-            <!-- <label for="state">State</label> -->
-            <label for="state">コーディネートの用途</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <!-- <option value="">Choose...</option> -->
-              <option value="">選択してください</option>
-              <!-- <option>California</option> -->
-              <option>プライベート</option>
-              <option>通勤、通学</option>
-              <option>デート</option>
-            </select>
-            <div class="invalid-feedback">
-              <!-- Please provide a valid state. -->
-              コーディネートの用途を選んでください。
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4">
-        <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
-        <button class="btn btn-primary btn-lg btn-block" type="submit">変更する</button>
-      </form>
-    </div>
+  <% end %>
+  <div>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2020 tora Inc.</p>
+    </footer>
   </div>
-  </div>
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2020 tora Inc.</p>
-  </footer>
-</div>
 
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function() {
-    'use strict';
+    <script>
+      (function() {
+        'use strict';
 
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
 
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
         }, false);
-      });
-    }, false);
-  })();
-
-         $(document).on('change', ':file', function() {
-            var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.parent().parent().next(':text').val(label);
-
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-            if (/^image/.test( files[0].type)){ // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
-                reader.onloadend = function(){ // set image data as background of div
-                    input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
-                }
-            }
-        });
-</script>
+      })();
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>
-  window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script><script src="/docs/4.5/assets/js/vendor/anchor.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -5,46 +5,60 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="/assets/coordination.scss" rel="stylesheet">
-    <link href="../example.css" rel="stylesheet">
   </head>
-  <body>
+  <style>
+    .description{
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+  </style>
+  <body >
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
       </div>
     </a>
-
-    <nav class="site-header sticky-top py-1 d-flex">
-      <a class="title" href="#">wewear</a>
-        <div class="container d-flex flex-column flex-md-row justify-content-around">
-          <div class="col 12">
-            <a class="py-2 offset-8 d-none d-md-inline-block" href="#">tora</a>
-            <a class="py-2 offset-2 d-none d-md-inline-block" href="#">新規投稿</a>
-          </div>
+    <div class="col-12 p-0"><h1 class="p-1 m-0">コーディネート情報</h1>
+    <div class="d-flex">
+      <div class="card col-4 p-0">
+        <%= image_tag @coordination.image %>
+      </div>
+      <div class="col-8 p-0">
+        <div class="col-12 p-0 d-flex">
+          <ul class="list-group col-6 p-0 description ">
+            <li class="list-group-item text-white bg-secondary">タイトル</li>
+            <li class="list-group-item text-white bg-secondary">説明</li>
+            <li class="list-group-item text-white bg-secondary">おすすめポイント</li>
+            <li class="list-group-item text-white bg-secondary">おすすめアイテム</li>
+            <li class="list-group-item text-white bg-secondary">コーディネート用途</li>
+          </ul>
+          <ul class="list-group col-6 p-0 description ">
+            <li class="list-group-item text-white bg-secondary"><%= @coordination.title%></li>
+            <li class="list-group-item text-white bg-secondary"><%= @coordination.description%></li>
+            <li class="list-group-item text-white bg-secondary"><%= @coordination.recommended_point%></li>
+            <li class="list-group-item text-white bg-secondary"><%= @coordination.favorite_item%></li>
+            <li class="list-group-item text-white bg-secondary"><%= @coordination.use%></li>
+          </ul>
         </div>
-    </nav>
-
-    <footer class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md">
-          <img class="mb-2 ml-4 " src="/assets/w.png" alt="" width="48" height="48"> 
-          <small class="d-block mb-3 mt-4 text-muted">&copy; 2020 tora Inc</small>
+        <div class="col-12 p-0 mt-4 text-white">a</div>
+        <div class="col-12 p-0 d-flex mt-4 ">
+          <div class="col-2"> </div>
+          <%= link_to '編集', edit_coordination_path(@coordination.id), method: :get, class: "btn btn-primary col-2"%></button>
+          <div class="col-2"> </div>
+          <div class="col-2"> </div>
+          <%= link_to '削除', coordination_path(@coordination.id), method: :delete, class: "btn btn-danger col-2"%></button>
+          <div class="col-2"> </div>
         </div>
       </div>
-    </footer>
-</div>
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<script>
-  Holder.addTheme('thumb', {
-    bg: '#55595c',
-    fg: '#eceeef',
-    text: 'Thumbnail'
-  });
-</script>
+    </div>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>
-  window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script><script src="/docs/4.5/assets/js/vendor/anchor.min.js"></script>
+
   </body>
 </html>
