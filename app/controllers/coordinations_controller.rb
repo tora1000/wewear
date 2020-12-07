@@ -1,5 +1,5 @@
 class CoordinationsController < ApplicationController
-  before_action :set_coordination, only: [:edit, :show]
+  before_action :set_coordination, only: [:edit, :show, :update, :destroy]
   def index
     @coordinations = Coordination.all
     @coordinations = Coordination.includes(:user)
@@ -20,7 +20,7 @@ class CoordinationsController < ApplicationController
   
   def edit
   end
-  
+
   def show  
   end
 
@@ -28,6 +28,24 @@ class CoordinationsController < ApplicationController
   end
 
   def week_coordination
+  end
+
+  def update
+    @coordination = Coordination.find(params[:id])
+    if @coordination.update(coordination_params)
+       redirect_to coordination_path
+    else
+       render :edit
+    end
+  end
+
+  def destroy
+    if current_user.id == @coordination.user_id
+      @coordination.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
