@@ -110,7 +110,7 @@ body {
       <%= f.label :password_confirmation, class:"sr-only" %>
         <%= f.password_field :password_confirmation, id:"password-confirmation", class: "form-control password-confirmation" ,placeholder: "パスワード(確認)"  %>
         
-      <%= f.select :sex_id, {'男性': 1, '女性': 2}, { include_blank: '性別を選択してください'}, { class: 'form-control custom-select' , required: true } %>
+      <%= f.select :sex_id, {'男性': '男性', '女性': '女性'}, { include_blank: '性別を選択してください'}, { class: 'form-control custom-select' , required: true } %>
       
       <%= f.submit "新規登録" ,class:"btn btn-lg btn-primary btn-block" %>
     

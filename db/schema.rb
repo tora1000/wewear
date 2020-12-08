@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_032421) do
     t.string "title", null: false
     t.text "description", null: false
     t.string "recommended_point", null: false
-    t.integer "favorite_item", null: false
-    t.integer "use", null: false
+    t.string "favorite_item", null: false
+    t.string "use", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_032421) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "sex_id", null: false
+    t.string "sex_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

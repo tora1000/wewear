@@ -4,8 +4,8 @@ class CreateCoordinations < ActiveRecord::Migration[6.0]
       t.string     :title,             null: false
       t.text       :description,       null: false
       t.string     :recommended_point, null: false
-      t.integer    :favorite_item,     null: false
-      t.integer    :use,               null: false
+      t.string     :favorite_item,     null: false
+      t.string     :use,               null: false
       t.references :user,              foreign_key: true
       t.timestamps
     end
