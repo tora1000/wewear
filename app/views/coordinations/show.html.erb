@@ -22,45 +22,60 @@
       </div>
     </a>
     <div class="col-12 p-0"><h1 class="p-1 m-0">コーディネート情報</h1>
-    <div class="d-flex">
-      <div class="card col-4 p-0">
-        <%= image_tag @coordination.image %>
-      </div>
-      <div class="col-8 p-0">
-        <div class="col-12 p-0 d-flex">
-          <ul class="list-group col-6 p-0 description ">
-            <li class="list-group-item text-white bg-secondary">タイトル</li>
-            <li class="list-group-item text-white bg-secondary">説明</li>
-            <li class="list-group-item text-white bg-secondary">おすすめポイント</li>
-            <li class="list-group-item text-white bg-secondary">おすすめアイテム</li>
-            <li class="list-group-item text-white bg-secondary">コーディネート用途</li>
-          </ul>
-          <ul class="list-group col-6 p-0 description ">
-            <li class="list-group-item text-white bg-secondary"><%= @coordination.title%></li>
-            <li class="list-group-item text-white bg-secondary"><%= @coordination.description%></li>
-            <li class="list-group-item text-white bg-secondary"><%= @coordination.recommended_point%></li>
-            <li class="list-group-item text-white bg-secondary"><%= @coordination.favorite_item%></li>
-            <li class="list-group-item text-white bg-secondary"><%= @coordination.use%></li>
-          </ul>
+      <div class="d-flex">
+        <div class="card col-4 p-0">
+          <%= image_tag @coordination.image %>
         </div>
-        <div class="col-12 p-0 mt-4 text-white">a</div>
-        <% if user_signed_in? && current_user.id == @coordination.user_id%>
-        <div class="col-12 p-0 d-flex mt-4 ">
-          <div class="col-2"> </div>
-          <%= link_to '編集', edit_coordination_path(@coordination.id), method: :get, class: "btn btn-primary col-2"%></button>
-          <div class="col-2"> </div>
-          <div class="col-2"> </div>
-          <%= link_to '削除', coordination_path(@coordination.id), method: :delete, class: "btn btn-danger col-2"%></button>
-          <div class="col-2"> </div>
+        <div class="col-8 p-0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>タイトル</th>
+                <th><%= @coordination.title %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>説明</td>
+                <td><%= @coordination.description %></td>
+              </tr>
+            </tbody>
+            </tbody>
+              <tr>
+                <td>おすすめポイント</td>
+                <td><%= @coordination.recommended_point %></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>おすすめアイテム</td>
+                <td><%= @coordination.favorite_item %></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>コーディネート用途</td>
+                <td><%= @coordination.use %></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="col-12 p-0 mt-4 text-white">a</div>
+          <% if user_signed_in? && current_user.id == @coordination.user_id %>
+            <div class="col-12 p-0 d-flex mt-4 ">
+              <div class="col-2"> </div>
+              <%= link_to '編集', edit_coordination_path(@coordination.id), method: :get, class: "btn btn-primary col-2"%></button>
+              <div class="col-2"> </div>
+              <div class="col-2"> </div>
+              <%= link_to '削除', coordination_path(@coordination.id), method: :delete, class: "btn btn-danger col-2"%></button>
+              <div class="col-2"> </div>
+            </div>
+          <% end %>
         </div>
-        <% end %>
+              
+
+        </div>
       </div>
     </div>
-    </div>
-
-
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
   </body>
 </html>
