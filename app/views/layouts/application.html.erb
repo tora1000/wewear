@@ -45,7 +45,7 @@
             <%= link_to '新規投稿', new_coordination_path %>
           </div>
           <div class="py-2 d-none d-md-inline-block">
-            <%= link_to 'マイページ' %>
+            <%= link_to "#{current_user.nickname}", user_path(current_user.id) %>
           </div>
           <div class="py-2 d-none d-md-inline-block">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
