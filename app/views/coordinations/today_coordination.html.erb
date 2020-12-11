@@ -6,15 +6,19 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="/assets/coordination.scss" rel="stylesheet">
   </head>
-
+  <style>
+  .card__title {
+    color: black ;
+  }
+  </style>
   <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">今日のコーディネートはこちら！</h1></div>
-  <div class="col-4 offset-4 ">
-  <%= image_tag @coordination.image %> 
+  <div class="col-6 offset-4 ">
+  <%= link_to image_tag(@coordination.image), coordination_path(@coordination.id), method: :get %>
   <table class="table p-0">
     <thead>
       <tr>
         <th>タイトル</th>
-        <th><%= @coordination.title %></th>
+        <th><%= link_to @coordination.title, coordination_path(@coordination.id), method: :get, class: :card__title %></th>
       </tr>
     </thead>
     <tbody>
@@ -37,7 +41,7 @@
     </tbody>
     <tbody>
       <tr>
-        <td>コーディネート用途</td>
+        <td>シチュエーション</td>
         <td><%= @coordination.use %></td>
       </tr>
     </tbody>
