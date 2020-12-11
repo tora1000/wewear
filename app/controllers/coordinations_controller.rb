@@ -1,5 +1,5 @@
 class CoordinationsController < ApplicationController
-  before_action :set_coordination, only: [:edit, :show, :update, :destroy, :today_coordination]
+  before_action :set_coordination, only: [:edit, :show, :update, :destroy]
   def index
     @coordinations = Coordination.all
     @coordinations = Coordination.includes(:user)
@@ -25,7 +25,7 @@ class CoordinationsController < ApplicationController
   end
 
   def today_coordination
-    Coordination.where( 'id >= ?', rand(Coordination.count) + 1 ).first
+    @coordination = Coordination.offset( rand(Coordination.count) ).first
   end
 
   def week_coordination
@@ -51,7 +51,7 @@ class CoordinationsController < ApplicationController
 
   private
   def coordination_params
-    params.require(:coordination).permit(:title, :description, :recommended_point, :favorite_item, :use, :image).merge(user_id: current_user.id)
+    params.require(:coordination).permit(:title, :description, :recommended_point, :favorite_Coordination, :use, :image).merge(user_id: current_user.id)
   end
 
   def set_coordination
