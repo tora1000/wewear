@@ -5,45 +5,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="/assets/coordination.scss" rel="stylesheet">
-    <link href="../example.css" rel="stylesheet">
   </head>
-  <body >
-    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
-  <div class="container">
-    <span class="skiplink-text">Skip to main content</span>
+
+  <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">今日のコーディネートはこちら！</h1></div>
+  <div class="col-4 offset-4 ">
+  <%= image_tag @coordination.image %> 
+  <table class="table p-0">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th><%= @coordination.title %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>説明</td>
+        <td><%= @coordination.description %></td>
+      </tr>
+    </tbody>
+    </tbody>
+      <tr>
+        <td>おすすめポイント</td>
+        <td><%= @coordination.recommended_point %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>おすすめアイテム</td>
+        <td><%= @coordination.favorite_item %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>コーディネート用途</td>
+        <td><%= @coordination.use %></td>
+      </tr>
+    </tbody>
+  </table>
   </div>
-</a>
-
-  <nav class="site-header sticky-top py-1 d-flex">
-  <a class="title" href="#">wewear</a>
-  <div class="container d-flex flex-column flex-md-row justify-content-around">
-    <a class="py-2 d-none d-md-inline-block" href="#">今週のコーディネート</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">tora</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">新規投稿</a>
-  </div>
-  </nav>
-
-    <footer class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md">
-          <img class="mb-2 ml-4 " src="/assets/w.png" alt="" width="48" height="48"> 
-          <small class="d-block mb-3 mt-4 text-muted">&copy; 2020 tora Inc</small>
-        </div>
-      </div>
-    </footer>
-</div>
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<script>
-  Holder.addTheme('thumb', {
-    bg: '#55595c',
-    fg: '#eceeef',
-    text: 'Thumbnail'
-  });
-</script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>
-  window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script><script src="/docs/4.5/assets/js/vendor/anchor.min.js"></script>
-  </body>
 </html>

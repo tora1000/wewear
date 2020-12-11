@@ -1,5 +1,5 @@
 class CoordinationsController < ApplicationController
-  before_action :set_coordination, only: [:edit, :show, :update, :destroy]
+  before_action :set_coordination, only: [:edit, :show, :update, :destroy, :today_coordination]
   def index
     @coordinations = Coordination.all
     @coordinations = Coordination.includes(:user)
@@ -25,6 +25,7 @@ class CoordinationsController < ApplicationController
   end
 
   def today_coordination
+    Coordination.where( 'id >= ?', rand(Coordination.count) + 1 ).first
   end
 
   def week_coordination
