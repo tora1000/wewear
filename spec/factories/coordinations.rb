@@ -3,8 +3,8 @@ FactoryBot.define do
     title { "コートコーディネート" }
     description { "コートコーディネート" }
     recommended_point { "コート" }
-    favorite_item { 1 }
-    use { 1 }
+    favorite_item { "アウター" }
+    use { "デート" }
 
     association :user
 
