@@ -4,6 +4,6 @@ FactoryBot.define do
     email { Faker::Internet.free_email }
     password { 'aaaa0000' }
     password_confirmation { password }
-    sex_id { 1 }
+    sex_id { '男性' }
   end
 end

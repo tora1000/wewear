@@ -11,40 +11,47 @@
     color: black ;
   }
   </style>
-  <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">今日のコーディネートはこちら！</h1></div>
-  <div class="col-6 offset-4 ">
-  <%= link_to image_tag(@coordination.image), coordination_path(@coordination.id), method: :get %>
-  <table class="table p-0">
-    <thead>
-      <tr>
-        <th>タイトル</th>
-        <th><%= link_to @coordination.title, coordination_path(@coordination.id), method: :get, class: :card__title %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>説明</td>
-        <td><%= @coordination.description %></td>
-      </tr>
-    </tbody>
-    </tbody>
-      <tr>
-        <td>おすすめポイント</td>
-        <td><%= @coordination.recommended_point %></td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>おすすめアイテム</td>
-        <td><%= @coordination.favorite_item %></td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>シチュエーション</td>
-        <td><%= @coordination.use %></td>
-      </tr>
-    </tbody>
-  </table>
+    <% if @coordination.blank? %>
+        <div class="col-12 p-0 mt-4"><h1 class="p-1 m-0 text-center">投稿したコーディネートがありません！</h1></div>
+        <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">コーディネートを投稿しましょう！</h1></div>
+        <div class="col-12 p-0 mt-4 text-white">a</div>
+        <div class="col-12 p-0 text-center my-4"><%= link_to '新規投稿', new_coordination_path, class: "btn btn-secondary btn-lg"%></div>
+    <% else %>
+      <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">今日のコーディネートはこちら！</h1></div>
+      <div class="col-6 offset-4 ">
+      <%= link_to image_tag(@coordination.image), coordination_path(@coordination.id), method: :get %>
+      <table class="table p-0">
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th><%= link_to @coordination.title, coordination_path(@coordination.id), method: :get, class: :card__title %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>説明</td>
+            <td><%= @coordination.description %></td>
+          </tr>
+        </tbody>
+        </tbody>
+          <tr>
+            <td>おすすめポイント</td>
+            <td><%= @coordination.recommended_point %></td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>おすすめアイテム</td>
+            <td><%= @coordination.favorite_item %></td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>シチュエーション</td>
+            <td><%= @coordination.use %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </html>
