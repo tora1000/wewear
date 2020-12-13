@@ -26,7 +26,9 @@ class CoordinationsController < ApplicationController
 
   def today_coordination
     @coordinations = Coordination.where(user_id: current_user.id)
-    @coordination = @coordinations.where( 'id >= ?', rand(@coordinations.first.id..@coordinations.last.id) ).first
+    unless @coordinations.empty?
+      @coordination = @coordinations.where( 'id >= ?', rand(@coordinations.first.id..@coordinations.last.id) ).first
+    end
   end
 
   def week_coordination

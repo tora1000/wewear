@@ -7,51 +7,70 @@
     <link href="/assets/coordination.scss" rel="stylesheet">
   </head>
   <style>
-  .card__title {
-    color: black ;
-  }
+    .description{
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+    .image {
+    width: 100%; 
+    height: 100%;
+    }
+
   </style>
-    <% if @coordination.blank? %>
+  <body >
+    <% if @coordination == nil %>
         <div class="col-12 p-0 mt-4"><h1 class="p-1 m-0 text-center">投稿したコーディネートがありません！</h1></div>
         <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">コーディネートを投稿しましょう！</h1></div>
         <div class="col-12 p-0 mt-4 text-white">a</div>
         <div class="col-12 p-0 text-center my-4"><%= link_to '新規投稿', new_coordination_path, class: "btn btn-secondary btn-lg"%></div>
     <% else %>
-      <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">今日のコーディネートはこちら！</h1></div>
-      <div class="col-6 offset-4 ">
-      <%= link_to image_tag(@coordination.image), coordination_path(@coordination.id), method: :get %>
-      <table class="table p-0">
-        <thead>
-          <tr>
-            <th>タイトル</th>
-            <th><%= link_to @coordination.title, coordination_path(@coordination.id), method: :get, class: :card__title %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>説明</td>
-            <td><%= @coordination.description %></td>
-          </tr>
-        </tbody>
-        </tbody>
-          <tr>
-            <td>おすすめポイント</td>
-            <td><%= @coordination.recommended_point %></td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>おすすめアイテム</td>
-            <td><%= @coordination.favorite_item %></td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>シチュエーション</td>
-            <td><%= @coordination.use %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
-  </div>
+    <div class="col-12 p-1 my-2 "><h1 class="p-1 m-0">今日のコーディネートはこちら！</h1></div>
+      <div class="d-flex">
+        <div class=" col-4 p-0">
+          <%= link_to image_tag(@coordination.image, class: :image), coordination_path(@coordination.id), method: :get %>
+        </div>
+        <div class="col-8 p-0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>タイトル</th>
+                <th><%= @coordination.title %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>説明</td>
+                <td><%= @coordination.description %></td>
+              </tr>
+            </tbody>
+            </tbody>
+              <tr>
+                <td>おすすめポイント</td>
+                <td><%= @coordination.recommended_point %></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>おすすめアイテム</td>
+                <td><%= @coordination.favorite_item %></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>コーディネート用途</td>
+                <td><%= @coordination.use %></td>
+              </tr>
+            </tbody>
+          </table>
+          <% end %>
+        </div>
+              
+
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  </body>
 </html>
