@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: wewear_production
-  username: wewear
-  password: <%= ENV['WEWEAR_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['Pandora114'] %>
+  socket: /var/lib/mysql/mysql.sock
