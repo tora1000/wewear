@@ -60,7 +60,7 @@ password:wewear1000
 [![Image from Gyazo](https://i.gyazo.com/fff74836623f11447434cf057d7bef49.gif)](https://gyazo.com/fff74836623f11447434cf057d7bef49)
 
 #### 今日のコーディネート機能  
-1日のコーディネートを決めてくれます。
+1日のコーディネートを自分が投稿したコーディネートから決めてくれます。
 投稿したコーディネートの中からコーディネートをランダムで呼び出し今日のコーディネートとして表示します。  
 
 [![Image from Gyazo](https://i.gyazo.com/4a6a1336834c727d883d976261edecde.gif)](https://gyazo.com/4a6a1336834c727d883d976261edecde)
@@ -69,8 +69,6 @@ password:wewear1000
 
 今週のコーディネート機能(1周間のコーディネートを決めてくれる)  
 コメント、いいね機能  
-ゲストログイン機能  
-ゲスト投稿機能  
 コーディネートカテゴリー分け  
 SNSログイン機能
 
