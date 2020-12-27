@@ -2,7 +2,6 @@
   <title>Signin Template for Bootstrap · Bootstrap</title> 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
-  <link href="/assets/user.scss" rel="stylesheet">
   <link href="/assets/coordination.css" rel="stylesheet">
 </head> 
     
@@ -105,6 +104,9 @@ body {
       <%= f.password_field :password, id:"password", class: "form-control password" ,placeholder: "パスワード"  %>
       
       <%= f.submit "ログイン" ,class:"btn btn-lg btn-primary btn-block" %>
+
+      <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post%>
+      <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
     
       <div class="mt-5 mb-3 text-muted">&copy; 2020 tora Inc.</div>
     <% end %>
