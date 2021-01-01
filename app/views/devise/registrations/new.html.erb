@@ -3,6 +3,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
   <link href="/assets/coordination.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/bootstrap-social.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head> 
     
 <style>
@@ -82,6 +84,12 @@ body {
     color: #fff;
     text-decoration: none;
   }
+  .btn.btn-block.btn-social{
+  color: #fff;
+  }
+  .form{
+
+  }
 </style>
 <body class="text-center" >
   <div class="form-signin"> 
@@ -108,11 +116,15 @@ body {
       
       <%= f.submit "新規登録" ,class:"btn btn-lg btn-primary btn-block" %>
 
-      <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post%>
-      <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post%>
-    
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-block btn-social btn-google",method: :post do %>
+        <span class="fa fa-google"></span>Googleで登録
+      <% end %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-social btn-facebook",method: :post do %>
+        <span class="fa fa-facebook"></span>Facebookで登録
+      <% end %>
       <div class="mt-5 mb-3 text-muted">&copy; 2020 tora Inc.</div>
     <% end %>
   </div>
 </body>
+
 
