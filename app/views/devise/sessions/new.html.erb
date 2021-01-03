@@ -3,6 +3,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
   <link href="/assets/coordination.css" rel="stylesheet">
+  <link href="/assets/coordination.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/bootstrap-social.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head> 
     
 <style>
@@ -105,8 +108,12 @@ body {
       
       <%= f.submit "ログイン" ,class:"btn btn-lg btn-primary btn-block" %>
 
-      <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post%>
-      <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-block btn-social btn-google",method: :post do %>
+        <span class="fa fa-google"></span>Googleでログイン
+      <% end %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-social btn-facebook",method: :post do %>
+        <span class="fa fa-facebook"></span>Facebookでログイン
+      <% end %>
     
       <div class="mt-5 mb-3 text-muted">&copy; 2020 tora Inc.</div>
     <% end %>
