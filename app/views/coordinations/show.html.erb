@@ -76,5 +76,20 @@
         </div>
         </div>
       </div>
+      <h3>コメント</h3>
+      <% if user_signed_in? %>
+        <%= form_with model: [@coordination, @comment], local: true do |f| %>
+          <%= f.text_field :text %>
+          <%= f.submit '送信',method: :post %>
+        <% end %>
+      <% end %>
+      <% if @comments %>
+        <% @comments.reverse_each do |comment| %>
+          <p>
+            <%= comment.text %>
+            <%= link_to comment.user.nickname, user_path(comment.user_id), class: :comment_user %>
+          </p>
+        <% end %>
+      <% end %>
   </body>
 </html>
