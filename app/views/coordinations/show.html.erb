@@ -17,7 +17,7 @@
     }
     .card__user {
       display: block;
-      font-size: 12px;
+      font-size: 15px;
       color: #999;
       text-decoration: underline;
       text-decoration: none;
@@ -29,6 +29,7 @@
     .comments_list{
       list-style-type: square;
       padding-bottom: 5px;
+      font-size: 18px; 
     }
   </style>
   <body >
@@ -90,19 +91,19 @@
         </div>
         </div>
       </div>
-      <h3>コメント</h3>
+      <h3 class="m-2">コメント</h3>
       <% if user_signed_in? %>
         <%= form_with model: [@coordination, @comment], local: true do |f| %>
-          <%= f.text_field :text class: " "%>
+          <%= f.text_field :text ,class: "w-25 ml-2"%>
           <%= f.submit '送信',method: :post ,class: "btn btn-primary"%>
         <% end %>
       <% end %>
-      <ul class="comments_lists">
+      <ul class="comments_lists ml-2">
         <% if @comments %>
           <% @comments.reverse_each do |comment| %>
-            <li class="comments_list">
+            <li class="comments_list ml-2">
               <%= comment.text %>
-              <%= link_to comment.user.nickname, user_path(comment.user_id), class: :card__user %>
+              <%= link_to comment.user.nickname, user_path(comment.user_id), class: "card__user ml-2" %>
             </li>
           <% end %>
         <% end %>
