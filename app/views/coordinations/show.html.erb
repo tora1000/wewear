@@ -15,7 +15,21 @@
     width: 100%; 
     height: 100%;
     }
+    .card__user {
+      display: block;
+      font-size: 12px;
+      color: #999;
+      text-decoration: underline;
+      text-decoration: none;
+    }
+    .comments_lists{
+      padding-left: 20px;
+    }
 
+    .comments_list{
+      list-style-type: square;
+      padding-bottom: 5px;
+    }
   </style>
   <body >
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
@@ -79,17 +93,19 @@
       <h3>コメント</h3>
       <% if user_signed_in? %>
         <%= form_with model: [@coordination, @comment], local: true do |f| %>
-          <%= f.text_field :text %>
-          <%= f.submit '送信',method: :post %>
+          <%= f.text_field :text class: " "%>
+          <%= f.submit '送信',method: :post ,class: "btn btn-primary"%>
         <% end %>
       <% end %>
-      <% if @comments %>
-        <% @comments.reverse_each do |comment| %>
-          <p>
-            <%= comment.text %>
-            <%= link_to comment.user.nickname, user_path(comment.user_id), class: :comment_user %>
-          </p>
+      <ul class="comments_lists">
+        <% if @comments %>
+          <% @comments.reverse_each do |comment| %>
+            <li class="comments_list">
+              <%= comment.text %>
+              <%= link_to comment.user.nickname, user_path(comment.user_id), class: :card__user %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
+      </ul>
   </body>
 </html>
