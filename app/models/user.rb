@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :coordinations
   has_many :comments
   has_many :sns_credentials
-
+  has_many :comments, dependent: :destroy
+  
   with_options presence: true do
     validates :nickname,:email,:sex_id
   end
