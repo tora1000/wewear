@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :today_coordination
       get :week_coordination
     end
-    resources :comments, only: [:create,:new]
+    resources :comments, only: [:create]
   end
   resources :users, only: :show
 end
