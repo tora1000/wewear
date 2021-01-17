@@ -41,7 +41,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://wewear-1000.herokuapp.com/' ]
+  # config.action_cable.allowed_request_origins = [ 'https://wewear-1000.herokuapp.com/' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -88,6 +88,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+
+  ActionCable.server.config.disable_request_forgery_protection = true
+  config.action_cable.url = "wss://wewear-1000.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://wewear-1000.herokuapp.com', 'http://wewear-1000.herokuapp.com']
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
