@@ -71,8 +71,9 @@ SNSで登録ボタンを押すことでニックネーム、メールアドレ�
 <a href="https://gyazo.com/070e12062e825e01413d366360bb3751"><img src="https://i.gyazo.com/070e12062e825e01413d366360bb3751.png" alt="Image from Gyazo" width="1432"/></a>
 
 #### コメント機能
-投稿詳細ページでコメントを投稿できるようにしました。
-ログインしたユーザーのみコメントを投稿できるようにしました。
+投稿詳細ページでコメントを投稿できるようにしました。  
+ログインしたユーザーのみコメントを投稿できるようにしました。  
+コーディネートに対して質問や、意見を言える機能が欲しくて実装しました。  
 <a href="https://gyazo.com/5d72fe44a27a8950766181cd5c04abd9"><img src="https://i.gyazo.com/5d72fe44a27a8950766181cd5c04abd9.gif" alt="Image from Gyazo" width="1000"/></a>
 
 ### 実装予定の機能
