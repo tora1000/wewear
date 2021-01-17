@@ -66,13 +66,19 @@ password:wewear1000
 [![Image from Gyazo](https://i.gyazo.com/4a6a1336834c727d883d976261edecde.gif)](https://gyazo.com/4a6a1336834c727d883d976261edecde)
 
 #### 新規登録SNS登録機能
-SNSで登録ボタンを押すことでニックネーム、メールアドレスをSNSと同じ物で登録することができ、入力の手間が省け登録しやすくした。  
-ログインも入力無しで簡単にログインすることが出来る。  
+SNSで登録ボタンを押すことでニックネーム、メールアドレスをSNSと同じ物で登録することができ、入力の手間が省け登録しやすくしました。  
+ログインも入力無しで簡単にログインすることが出来ます。  
+<a href="https://gyazo.com/070e12062e825e01413d366360bb3751"><img src="https://i.gyazo.com/070e12062e825e01413d366360bb3751.png" alt="Image from Gyazo" width="1432"/></a>
+
+#### コメント機能
+投稿詳細ページでコメントを投稿できるようにしました。
+ログインしたユーザーのみコメントを投稿できるようにしました。
+<a href="https://gyazo.com/5d72fe44a27a8950766181cd5c04abd9"><img src="https://i.gyazo.com/5d72fe44a27a8950766181cd5c04abd9.gif" alt="Image from Gyazo" width="1000"/></a>
 
 ### 実装予定の機能
 
 今週のコーディネート機能(1周間のコーディネートを決めてくれる)  
-コメント、いいね機能  
+いいね機能  
 コーディネートカテゴリー分け  
 
 ### データベース設計
