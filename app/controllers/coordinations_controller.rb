@@ -1,5 +1,7 @@
 class CoordinationsController < ApplicationController
   before_action :set_coordination, only: [:edit, :show, :update, :destroy]
+  MAX_DISPLAY_RELATED_PRODUCTS = 5
+
   def index
     @coordinations = Coordination.all
     @coordinations = Coordination.includes(:user)
@@ -32,11 +34,11 @@ class CoordinationsController < ApplicationController
       @coordination = @coordinations.where( 'id >= ?', rand(@coordinations.first.id..@coordinations.last.id) ).first
     end
   end
-
+  
   def week_coordination
     @coordinations = Coordination.where(user_id: current_user.id)
     unless @coordinations.empty?
-      @coordination = @coordinations.where( 'id >= ?', rand(@coordinations.first.id..@coordinations.last.id) ).first
+      @coordination = @coordinations.order("RAND()").limit(5)
     end
   end
 
