@@ -2,26 +2,26 @@
 <html lang="ja" >
   <head>
     <link href="/assets/coordination.css" rel="stylesheet">
+    <style>
+      .description{
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+      .image {
+      width: 100%; 
+      height: 100%;
+      }
+    </style>
   </head>
-  <style>
-    .description{
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-    }
-    .image {
-    width: 100%; 
-    height: 100%;
-    }
 
-  </style>
-  <body >
+  <body>
     <% if @coordination == nil %>
-        <div class="col-12 p-0 mt-4"><h1 class="p-1 m-0 text-center">投稿したコーディネートがありません！</h1></div>
-        <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">コーディネートを投稿しましょう！</h1></div>
-        <div class="col-12 p-0 mt-4 text-white">a</div>
-        <div class="col-12 p-0 text-center my-4"><%= link_to '新規投稿', new_coordination_path, class: "btn btn-secondary btn-lg"%></div>
+      <div class="col-12 p-0 mt-4"><h1 class="p-1 m-0 text-center">投稿したコーディネートがありません！</h1></div>
+      <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">コーディネートを投稿しましょう！</h1></div>
+      <div class="col-12 p-0 mt-4 text-white">a</div>
+      <div class="col-12 p-0 text-center my-4"><%= link_to '新規投稿', new_coordination_path, class: "btn btn-secondary btn-lg"%></div>
     <% else %>
     <div class="col-12 p-1 my-2 "><h1 class="p-1 m-0">今日のコーディネートはこちら！</h1></div>
       <div class="d-flex">
@@ -62,9 +62,6 @@
             </tbody>
           </table>
           <% end %>
-        </div>
-              
-
         </div>
       </div>
     </div>

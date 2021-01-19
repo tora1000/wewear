@@ -1,112 +1,110 @@
 <!doctype html>
 <html lang="ja" >
   <head>
-    
     <link href="/assets/coordination.css" rel="stylesheet">
-  </head>
-  <style>
-    .description{
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-    }
-    .image {
-    width: 100%; 
-    height: 100%;
-    }
-    .card__user {
-      display: block;
-      font-size: 15px;
-      color: #999;
-      text-decoration: underline;
-      text-decoration: none;
-    }
-    .comments_lists{
-      padding-left: 20px;
-    }
+    <style>
+      .description{
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+      .image {
+      width: 100%; 
+      height: 100%;
+      }
+      .card__user {
+        display: block;
+        font-size: 15px;
+        color: #999;
+        text-decoration: underline;
+        text-decoration: none;
+      }
+      .comments_lists{
+        padding-left: 20px;
+      }
 
-    .comments_list{
-      list-style-type: square;
-      padding-bottom: 5px;
-      font-size: 18px; 
-    }
-  </style>
-  <body >
+      .comments_list{
+        list-style-type: square;
+        padding-bottom: 5px;
+        font-size: 18px; 
+      }
+    </style>
+  </head>
+  <body>
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
       </div>
     </a>
     <div class="col-12 p-1 my-2"><h1 class="p-1 m-0">コーディネート情報</h1></div>
-      <div class="d-flex">
-        <div class=" col-4 p-0">
-          <%= image_tag @coordination.image, class: :image %>
-        </div>
-        <div class="col-8 p-0">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>タイトル</th>
-                <th><%= @coordination.title %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>説明</td>
-                <td><%= @coordination.description %></td>
-              </tr>
-            </tbody>
-            </tbody>
-              <tr>
-                <td>おすすめポイント</td>
-                <td><%= @coordination.recommended_point %></td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <td>おすすめアイテム</td>
-                <td><%= @coordination.favorite_item %></td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <td>コーディネート用途</td>
-                <td><%= @coordination.use %></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="col-12 p-0 mt-4 text-white">a</div>
-          <div class="col-12 p-0 mt-4 text-white">a</div>
-          <% if user_signed_in? && current_user.id == @coordination.user_id %>
-            <div class="col-12 p-0 d-flex mt-4 ">
-              <div class="col-2"> </div>
-              <%= link_to '編集', edit_coordination_path(@coordination.id), method: :get, class: "btn btn-primary col-2"%>
-              <div class="col-2"> </div>
-              <div class="col-2"> </div>
-              <%= link_to '削除', coordination_path(@coordination.id), method: :delete, class: "btn btn-danger col-2"%>
-              <div class="col-2"> </div>
-            </div>
-          <% end %>
-        </div>
-        </div>
+    <div class="d-flex">
+      <div class=" col-4 p-0">
+        <%= image_tag @coordination.image, class: :image %>
       </div>
-      <h3 class="m-2">コメント</h3>
-      <% if user_signed_in? %>
-        <%= form_with model: [@coordination, @comment], local: true do |f| %>
-          <%= f.text_field :text ,class: "w-25 ml-2"%>
-          <%= f.submit '送信',method: :post ,class: "btn btn-primary"%>
+      <div class="col-8 p-0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th><%= @coordination.title %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>説明</td>
+              <td><%= @coordination.description %></td>
+            </tr>
+          </tbody>
+          </tbody>
+            <tr>
+              <td>おすすめポイント</td>
+              <td><%= @coordination.recommended_point %></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>おすすめアイテム</td>
+              <td><%= @coordination.favorite_item %></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>コーディネート用途</td>
+              <td><%= @coordination.use %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col-12 p-0 mt-4 text-white">a</div>
+        <div class="col-12 p-0 mt-4 text-white">a</div>
+        <% if user_signed_in? && current_user.id == @coordination.user_id %>
+          <div class="col-12 p-0 d-flex mt-4 ">
+            <div class="col-2"> </div>
+            <%= link_to '編集', edit_coordination_path(@coordination.id), method: :get, class: "btn btn-primary col-2"%>
+            <div class="col-2"> </div>
+            <div class="col-2"> </div>
+            <%= link_to '削除', coordination_path(@coordination.id), method: :delete, class: "btn btn-danger col-2"%>
+            <div class="col-2"> </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <h3 class="m-2">コメント</h3>
+    <% if user_signed_in? %>
+      <%= form_with model: [@coordination, @comment], local: true do |f| %>
+        <%= f.text_field :text ,class: "w-25 ml-2"%>
+        <%= f.submit '送信',method: :post ,class: "btn btn-primary"%>
+      <% end %>
+    <% end %>
+    <ul class="comments_lists ml-2">
+      <% if @comments %>
+        <% @comments.reverse_each do |comment| %>
+          <li class="comments_list ml-2">
+            <%= comment.text %>
+            <%= link_to comment.user.nickname, user_path(comment.user_id), class: "card__user ml-2" %>
+          </li>
         <% end %>
       <% end %>
-      <ul class="comments_lists ml-2">
-        <% if @comments %>
-          <% @comments.reverse_each do |comment| %>
-            <li class="comments_list ml-2">
-              <%= comment.text %>
-              <%= link_to comment.user.nickname, user_path(comment.user_id), class: "card__user ml-2" %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+    </ul>
   </body>
 </html>

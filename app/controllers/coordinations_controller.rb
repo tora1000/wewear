@@ -34,6 +34,10 @@ class CoordinationsController < ApplicationController
   end
 
   def week_coordination
+    @coordinations = Coordination.where(user_id: current_user.id)
+    unless @coordinations.empty?
+      @coordination = @coordinations.where( 'id >= ?', rand(@coordinations.first.id..@coordinations.last.id) ).first
+    end
   end
 
   def update

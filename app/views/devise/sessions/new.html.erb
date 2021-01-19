@@ -2,96 +2,12 @@
   <title>Signin Template for Bootstrap · Bootstrap</title> 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
-  <link href="/assets/coordination.css" rel="stylesheet">
-  <link href="/assets/coordination.css" rel="stylesheet">
+  <link href="/assets/users.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/bootstrap-social.css"/>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head> 
-    
-<style>
-html,
-body {
-  height: 100%;
-}
 
-body {
-  display: -ms-flexbox;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #f5f5f5;
-}
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-.form-signin .checkbox {
-  font-weight: 400;
-}
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-  .nickname {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  }
-  .email {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  }
-  .password {
-  margin-bottom: -1px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  }
-  .password-confirmation {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  }
-  .custom-select {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-bottom: 20px;
-  }
-  .form-signin .form-control:focus {
-  z-index: 2;
-}
-
-  .site-header {
-  background-color: rgba(0, 0, 0, .85);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  }
-  .site-header a {
-    color: #999;
-    transition: ease-in-out color .15s;
-  }
-  .site-header a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-</style>
 <body class="text-center" >
-  <%# <a id="skippy" class="sr-only sr-only-focusable" href="#content">
-    <div class="container">
-      <span class="skiplink-text">Skip to main content</span>
-    </div>
-  </a> %>
   
   <div class="form-signin"> 
     <%= form_with model: @user, url: user_session_path, local: true do |f| %>
