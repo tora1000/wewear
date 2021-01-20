@@ -6,6 +6,12 @@
   </head>
 
   <body>
+    <% if @coordinationnum != 5 %>
+      <div class="col-12 p-2 mt-4"><h1 class="p-1 m-0 text-center">投稿したコーディネートが5つ以上ありません！</h1></div>
+      <div class="col-12 p-0 "><h1 class="p-1 m-0 text-center">コーディネートを投稿しましょう！</h1></div>
+      <div class="col-12 p-0 mt-4 text-white">a</div>
+      <div class="col-12 p-0 text-center my-4"><%= link_to '新規投稿', new_coordination_path, class: "btn btn-secondary btn-lg"%></div>
+    <% else %>
     <div class="col-12 p-1 my-2 text-center"><h1 class="p-1 m-0">今週のコーディネートはこちら！</h1></div>
     <div class="col-12 my-4">
       <div class="d-flex">
@@ -19,5 +25,6 @@
         <%= render partial: "coordination", collection: @coordination %>
       </div>
     </div>
+    <% end %>
   </body>
 </html>

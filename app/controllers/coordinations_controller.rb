@@ -39,6 +39,8 @@ class CoordinationsController < ApplicationController
     @coordinations = Coordination.where(user_id: current_user.id)
     unless @coordinations.empty?
       @coordination = @coordinations.order("RAND()").limit(5)
+      @coordinationnum = @coordination.count
+      
     end
   end
 
