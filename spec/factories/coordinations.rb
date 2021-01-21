@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :coordination do
-    title { "コートコーディネート" }
-    description { "コートコーディネート" }
-    recommended_point { "コート" }
-    favorite_item { "アウター" }
-    use { "デート" }
+    title { 'コートコーディネート' }
+    description { 'コートコーディネート' }
+    recommended_point { 'コート' }
+    favorite_item { 'アウター' }
+    use { 'デート' }
 
     association :user
 

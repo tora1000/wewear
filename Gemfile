@@ -61,6 +61,7 @@ group :production do
 end
 
 gem 'bootstrap', '~> 4.1.1'
+
 gem 'jquery-rails'
 
 gem 'devise'
@@ -77,3 +78,7 @@ gem 'active_hash'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+
+group :development do
+  gem 'rubocop', require: false
+end

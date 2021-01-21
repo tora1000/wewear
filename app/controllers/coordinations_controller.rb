@@ -6,7 +6,7 @@ class CoordinationsController < ApplicationController
     @coordinations = Coordination.all
     @coordinations = Coordination.includes(:user)
   end
-  
+
   def new
     @coordination = Coordination.new
   end
@@ -19,11 +19,11 @@ class CoordinationsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
   end
 
-  def show  
+  def show
     @comment = Comment.new
     @comments = @coordination.comments.includes(:user)
   end
@@ -31,25 +31,24 @@ class CoordinationsController < ApplicationController
   def today_coordination
     @coordinations = Coordination.where(user_id: current_user.id)
     unless @coordinations.empty?
-      @coordination = @coordinations.where( 'id >= ?', rand(@coordinations.first.id..@coordinations.last.id) ).first
+      @coordination = @coordinations.where('id >= ?', rand(@coordinations.first.id..@coordinations.last.id)).first
     end
   end
-  
+
   def week_coordination
     @coordinations = Coordination.where(user_id: current_user.id)
     unless @coordinations.empty?
-      @coordination = @coordinations.order("RAND()").limit(5)
+      @coordination = @coordinations.order('RAND()').limit(5)
       @coordinationnum = @coordination.count
-      
     end
   end
 
   def update
     @coordination = Coordination.find(params[:id])
     if @coordination.update(coordination_params)
-       redirect_to coordination_path
+      redirect_to coordination_path
     else
-       render :edit
+      render :edit
     end
   end
 
@@ -63,6 +62,7 @@ class CoordinationsController < ApplicationController
   end
 
   private
+
   def coordination_params
     params.require(:coordination).permit(:title, :description, :recommended_point, :favorite_item, :use, :image).merge(user_id: current_user.id)
   end
